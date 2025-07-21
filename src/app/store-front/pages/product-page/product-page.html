@@ -1,1 +1,21 @@
-<p>product-page works!</p>
+@if (productResource.isLoading()) {
+<div class="flex justify-center items-center h-screen">
+  <span class="loading loading-spinner loading-lg"></span>
+</div>
+}
+<!-- producto -->
+@if (productResource.hasValue()) {
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <app-producto-carousel
+    [images]="productResource.value().images"
+  ></app-producto-carousel>
+  <div>
+    <h2 class="font-montserrat font-bold text-2xl">
+      {{ productResource.value().title }}
+    </h2>
+
+    <div class="divider"></div>
+    <p class="font-montserrat">{{ productResource.value().description }}</p>
+  </div>
+</div>
+}

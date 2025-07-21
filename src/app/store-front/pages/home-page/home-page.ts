@@ -14,7 +14,12 @@ export class HomePage {
   productsResource = rxResource({
     params: () => ({}),
     stream: ({ params }) => {
-      return this.productsService.getProducts();
+      return this.productsService.getProducts({
+        limit: 5,
+        offset: 1,
+        gender: 'men',
+      });
     },
   });
+
 }
