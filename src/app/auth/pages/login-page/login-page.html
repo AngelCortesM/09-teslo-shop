@@ -47,15 +47,15 @@
       required
       placeholder="Password"
       formControlName="password"
-      minlength="8"
-      pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-      title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
     />
   </label>
 
   <button type="submit" class="btn btn-primary">Iniciar sesión</button>
   @if (hasError()) {
-  <div role="alert" class="alert alert-error  animate-fade-in">
+  <div
+    role="alert"
+    class="alert alert-error animate-fade-in fixed bottom-5 right-5 w-100"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="h-6 w-6 shrink-0 stroke-current"
