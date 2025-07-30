@@ -4,6 +4,7 @@ import { HomePage } from './pages/home-page/home-page';
 import { GenderPage } from './pages/gender-page/gender-page';
 import { ProductPage } from './pages/product-page/product-page';
 import { NotFoundPage } from './pages/not-found-page/not-found-page';
+import { StoreFrontGuard } from '@auth/guards/store-front.guard';
 
 export const storeFrontRoutes: Routes = [
   {
@@ -14,8 +15,16 @@ export const storeFrontRoutes: Routes = [
         path: '',
         component: HomePage,
       },
-      { path: 'gender/:gender', component: GenderPage },
-      { path: 'product/:idSlug', component: ProductPage },
+      {
+        path: 'gender/:gender',
+        component: GenderPage,
+        canMatch: [StoreFrontGuard],
+      },
+      {
+        path: 'product/:idSlug',
+        component: ProductPage,
+        canMatch: [StoreFrontGuard],
+      },
       {
         path: '**',
         component: NotFoundPage,

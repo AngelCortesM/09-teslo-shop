@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
+import { Router } from '@angular/router';
 import { AuthResponse } from '@auth/interfaces/auth-response.interface';
 import { User } from '@auth/interfaces/user.interface';
 import { environment } from '@environments/environment';
@@ -16,6 +17,7 @@ export class AuthService {
     localStorage.getItem('token')
   );
   private readonly http = inject(HttpClient);
+  private readonly router = inject(Router);
 
   checkStatusResourse = rxResource({
     stream: () => this.checkStatus(),
@@ -81,6 +83,7 @@ export class AuthService {
 
   logout() {
     this._user.set(null);
+    console.log('soy logout');
     this._token.set(null);
     this._authStatus.set('not-authenticated');
     localStorage.removeItem('token');
