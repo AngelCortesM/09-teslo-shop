@@ -81,9 +81,16 @@
     </ul>
   </div>
   <div class="navbar-end gap-4">
-    @if(authService.authStatus()==='authenticated'){
+    @if(authService.isAdmin()) {
+    <a class="badge badge-accent animate-bounce" routerLink="/admin"
+      >Admin Panels</a
+    >} @if(authService.authStatus()==='authenticated'){
     <button class="btn btn-ghost">{{authService.user()?.fullName}}</button
-    ><button routerLink="/" (click)="authService.logout()" class="btn btn-sm btn-error">
+    ><button
+      routerLink="/"
+      (click)="authService.logout()"
+      class="btn btn-sm btn-error"
+    >
       Salir
     </button>
     } @else if (authService.authStatus()==='not-authenticated') {
