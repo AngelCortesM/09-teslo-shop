@@ -8,6 +8,9 @@ export class ProductImagePipe implements PipeTransform {
     if (value === null) {
       return 'assets/images/no-image.jpg';
     }
+    if (typeof value === 'string' && value.startsWith('blob:')) {
+      return value;
+    }
     // array > 1 = primer elemento
     if (Array.isArray(value) && value.length > 0) {
       return `${baseUrl}${value[0]}`;

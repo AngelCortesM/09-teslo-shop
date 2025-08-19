@@ -150,9 +150,24 @@
       </button>
     </div>
 
-    <app-producto-carousel [images]="product().images" />
+    <app-producto-carousel [images]="imageToCarousel()" />
 
-    <input type="file" class="file-input file-input-bordered w-full mt-4" />
+    <input
+      type="file"
+      multiple
+      accept="image/*"
+      class="file-input file-input-bordered w-full mt-4"
+      (change)="onFilesChange($event)"
+    />
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+      @for (img of tempImages(); track img) {
+      <img
+        [src]="img"
+        alt="Temporal Img"
+        class="w-full object-cover rounded-xl"
+      />
+      }
+    </div>
   </div>
 </form>
 @if(wasSaved()){
