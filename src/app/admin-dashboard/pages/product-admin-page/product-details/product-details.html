@@ -155,4 +155,8 @@
     <input type="file" class="file-input file-input-bordered w-full mt-4" />
   </div>
 </form>
-to join this co
+@if(wasSaved()){
+<div class="alert alert-success fixed b-4 r-4 w-80 animate-fadeIn">
+  <span>Datos Actualizados correctamente</span>
+</div>
+}

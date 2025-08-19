@@ -4,7 +4,10 @@ const baseUrl = 'http://localhost:3000/api/files/product/';
   name: 'productImage',
 })
 export class ProductImagePipe implements PipeTransform {
-  transform(value: string | string[]): string {
+  transform(value: null | string | string[]): string {
+    if (value === null) {
+      return 'assets/images/no-image.jpg';
+    }
     // array > 1 = primer elemento
     if (Array.isArray(value) && value.length > 0) {
       return `${baseUrl}${value[0]}`;

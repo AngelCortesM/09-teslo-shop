@@ -93,6 +93,13 @@ export class ProductsService {
       );
   }
 
+  createProduct(productLike: Partial<Product>): Observable<Product> {
+    return this.http.post<Product>(`${baseUrl}/products`, productLike).pipe(
+      tap((product) => this.updateProductCache(product.id, product)),
+      catchError((err) => of('Error de la base de datos ', err))
+    );
+  }
+
   updateProductCache(id: string, product: Product) {
     this.productCache.set(id, product);
     this.productsCache.forEach((productResponse) => {
