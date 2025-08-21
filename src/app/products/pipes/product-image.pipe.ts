@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-const baseUrl = 'http://localhost:3000/api/files/product/';
+const baseUrl = 'https://one0-nest-teslo-shop-backend-qjr4.onrender.com/api/files/product/';
 @Pipe({
   name: 'productImage',
 })
